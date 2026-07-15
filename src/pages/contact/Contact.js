@@ -5,6 +5,7 @@ import { FaEnvelope, FaPhoneAlt, FaTwitter } from 'react-icons/fa';
 import { GoLocation } from "react-icons/go";
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { BACKEND_URL } from '../../services/authService';
 
 const Contact = () => {
 
@@ -19,7 +20,7 @@ const Contact = () => {
     const sendEmail = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:5000/api/contactus`, data);
+            const response = await axios.post(`${BACKEND_URL}/api/contactus`, data);
             setSubject("");
             setMessage("");
             toast.success(response.data.message);
